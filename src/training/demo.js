@@ -1,37 +1,7 @@
 import { createStore } from 'redux';
-import {status, sort} from './actions/index';
+import { status, sort } from './actions/index';
 
-var initialState = {
-    status: false,
-    sort: {
-        by: 'name',
-        value: 1,
-    }
-};
-
-var myReducer = (state = initialState, action) => {
-    if(action.type === 'TOGGLE_STATUS') {
-        return {...state, status: !state.status};
-        // state.status = !state.status;
-        // return state;
-    }
-    if(action.type === 'SORT') {
-        let {by, value} = action.sort; // by = action.by
-        let {status} = state; // status = state.status
-        // state.sort = {
-        //     by: action.sort.by,
-        //     value: action.sort.value
-        // }
-        return {
-            status: status,
-            sort: {
-                by: by,
-                value: value
-            }
-        };
-    }
-    return state;
-}
+import myReducer from './reducers/index';
 
 const store = createStore(myReducer);
 
